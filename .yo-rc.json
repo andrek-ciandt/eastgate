@@ -1,0 +1,15 @@
+{
+  "generator-react-firebase": {
+    "promptValues": {
+      "githubUser": "geovanneb",
+      "firebaseName": "eg-hackthon",
+      "firebaseKey": "AIzaSyDuTYaRp1xP38vUtj7KM8QoMmFzqlzLgfM",
+      "includeRedux": true,
+      "includeFirestore": true,
+      "otherFeatures": [
+        "Firebase Functions (with ESNext support)"
+      ],
+      "deployTo": "firebase"
+    }
+  }
+}

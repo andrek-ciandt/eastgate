@@ -1,0 +1,32 @@
+{
+  "projects": {
+    "default": "eg-hackthon",
+    "master": "eg-hackthon",
+    "prod": "eg-hackthon"
+  },
+  "ci": {
+    "copyVersion": true,
+    "createConfig": {
+      "master": {
+        "env": "staging",
+        "firebase": {
+          "apiKey": "${STAGE_FIREBASE_API_KEY}",
+          "authDomain": "eg-hackthon.firebaseapp.com",
+          "databaseURL": "https://eg-hackthon.firebaseio.com",
+          "projectId": "eg-hackthon",
+          "storageBucket": "eg-hackthon.appspot.com"
+        }
+      },
+      "prod": {
+        "env": "production",
+        "firebase": {
+          "apiKey": "${PROD_FIREBASE_API_KEY}",
+          "authDomain": "eg-hackthon.firebaseapp.com",
+          "databaseURL": "https://eg-hackthon.firebaseio.com",
+          "projectId": "eg-hackthon",
+          "storageBucket": "eg-hackthon.appspot.com"
+        }
+      }
+    }
+  }
+}
