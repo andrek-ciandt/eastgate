@@ -5,13 +5,19 @@ import IconButton from '@material-ui/core/IconButton'
 import Tooltip from '@material-ui/core/Tooltip'
 import DeleteIcon from '@material-ui/icons/Delete'
 
-function ProjectTile({ name, onSelect, onDelete, showDelete, classes }) {
+function EventTile({ name, place, time, description, onSelect, onDelete, showDelete, classes }) {
   return (
     <Paper className={classes.root}>
       <div className={classes.top}>
         <span className={classes.name} onClick={onSelect}>
           {name || 'No Name'}
         </span>
+        <p>
+          {place || 'No Place'}
+        </p>
+        <p>
+          {description || 'No Description'}
+        </p>
         {showDelete && onDelete ? (
           <Tooltip title="delete">
             <IconButton onClick={onDelete}>
@@ -24,16 +30,17 @@ function ProjectTile({ name, onSelect, onDelete, showDelete, classes }) {
   )
 }
 
-ProjectTile.propTypes = {
+EventTile.propTypes = {
   classes: PropTypes.object.isRequired, // from enhancer (withStyles)
   name: PropTypes.string,
+  place: PropTypes.string,
   onSelect: PropTypes.func.isRequired,
   onDelete: PropTypes.func,
   showDelete: PropTypes.bool
 }
 
-ProjectTile.defaultProps = {
+EventTile.defaultProps = {
   showDelete: true
 }
 
-export default ProjectTile
+export default EventTile

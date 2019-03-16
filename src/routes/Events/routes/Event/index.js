@@ -1,9 +1,9 @@
 import { Loadable } from 'utils/components'
 
 export default {
-  path: ':projectId',
+  path: ':eventId',
   component: Loadable({
     loader: () =>
-      import(/* webpackChunkName: 'Project' */ './components/ProjectPage')
+      import(/* webpackChunkName: 'Event' */ './components/EventPage')
   })
 }

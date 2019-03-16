@@ -4,10 +4,10 @@ import CoreLayout from '../layouts/CoreLayout'
 import Home from './Home'
 import LoginRoute from './Login'
 import SignupRoute from './Signup'
-import ProjectsRoute from './Projects'
+import EventsRoute from './Events'
 import AccountRoute from './Account'
 import NotFoundRoute from './NotFound'
-import EventRoute from '.Event'
+import EventRoute from './Event'
 
 export default function createRoutes(store) {
   return (
@@ -17,7 +17,7 @@ export default function createRoutes(store) {
         {/* Build Route components from routeSettings */
         [
           AccountRoute,
-          ProjectsRoute,
+          EventsRoute,
           SignupRoute,
           LoginRoute,
           EventRoute

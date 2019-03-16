@@ -9,7 +9,7 @@ import styles from './LoginPage.styles'
 export default compose(
   // Set component display name (more clear in dev/error tools)
   setDisplayName('EnhancedLoginPage'),
-  // redirect to /projects if user is already authed
+  // redirect to /events if user is already authed
   UserIsNotAuthenticated,
   // add props.showError
   withNotifications,

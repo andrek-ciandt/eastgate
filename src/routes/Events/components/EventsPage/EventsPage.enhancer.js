@@ -8,11 +8,11 @@ import { withNotifications } from 'modules/notification'
 import { spinnerWhileLoading } from 'utils/components'
 import { UserIsAuthenticated } from 'utils/router'
 import { LIST_PATH } from 'constants/paths'
-import styles from './ProjectsPage.styles'
+import styles from './EventsPage.styles'
 
 export default compose(
   // Set component display name (more clear in dev/error tools)
-  setDisplayName('EnhancedProjectsPage'),
+  setDisplayName('EnhancedEventsPage'),
   // redirect to /login if user is not logged in
   UserIsAuthenticated,
   // Map auth uid from state to props
@@ -21,18 +21,18 @@ export default compose(
   spinnerWhileLoading(['uid']),
   // Create listeners based on current users UID
   firestoreConnect(({ uid }) => [
-    // Listener for projects the current user created
+    // Listener for events the current user created
     {
-      collection: 'projects',
+      collection: 'events',
       where: ['createdBy', '==', uid]
     }
   ]),
-  // Map projects from state to props
+  // Map events from state to props
   connect(({ firestore: { ordered } }) => ({
-    projects: ordered.projects
+    events: ordered.events
   })),
-  // Show loading spinner while projects and collabProjects are loading
-  spinnerWhileLoading(['projects']),
+  // Show loading spinner while events and collabEvents are loading
+  spinnerWhileLoading(['events']),
   // Add props.router
   withRouter,
   // Add props.showError and props.showSuccess
@@ -52,14 +52,14 @@ export default compose(
   ),
   // Add handlers as props
   withHandlers({
-    addProject: props => newInstance => {
+    addEvent: props => newInstance => {
       const { firestore, uid, showError, showSuccess, toggleDialog } = props
       if (!uid) {
-        return showError('You must be logged in to create a project')
+        return showError('You must be logged in to create a event')
       }
       return firestore
         .add(
-          { collection: 'projects' },
+          { collection: 'events' },
           {
             ...newInstance,
             createdBy: uid,
@@ -68,27 +68,27 @@ export default compose(
         )
         .then(() => {
           toggleDialog()
-          showSuccess('Project added successfully')
+          showSuccess('Event added successfully')
         })
         .catch(err => {
           console.error('Error:', err) // eslint-disable-line no-console
-          showError(err.message || 'Could not add project')
+          showError(err.message || 'Could not add event')
           return Promise.reject(err)
         })
     },
-    deleteProject: props => projectId => {
+    deleteEvent: props => eventId => {
       const { firestore, showError, showSuccess } = props
       return firestore
-        .delete({ collection: 'projects', doc: projectId })
-        .then(() => showSuccess('Project deleted successfully'))
+        .delete({ collection: 'events', doc: eventId })
+        .then(() => showSuccess('Event deleted successfully'))
         .catch(err => {
           console.error('Error:', err) // eslint-disable-line no-console
-          showError(err.message || 'Could not delete project')
+          showError(err.message || 'Could not delete event')
           return Promise.reject(err)
         })
     },
-    goToProject: ({ history }) => projectId => {
-      history.push(`${LIST_PATH}/${projectId}`)
+    goToEvent: ({ history }) => eventId => {
+      history.push(`${LIST_PATH}/${eventId}`)
     }
   }),
   // Add styles as props.classes

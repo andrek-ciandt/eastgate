@@ -46,7 +46,7 @@ function Home({ classes }) {
           </span>
           <ul>
             <li>
-              <Link to={LIST_PATH}>Projects</Link>
+              <Link to={LIST_PATH}>Events</Link>
             </li>
             <li>
               <Link to={ACCOUNT_PATH}>Account</Link>
@@ -56,7 +56,7 @@ function Home({ classes }) {
         <div className={classes.section}>
           <h4>Logged In</h4>
           <span>
-            User is redirected to <pre>/projects</pre> if authenticated and trying
+            User is redirected to <pre>/events</pre> if authenticated and trying
             to vist:
           </span>
           <ul>

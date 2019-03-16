@@ -9,16 +9,16 @@ import { Field } from 'redux-form'
 import { TextField } from 'redux-form-material-ui'
 import { required } from 'utils/form'
 
-function NewProjectDialog({ classes, handleSubmit, open, onRequestClose }) {
+function NewEventDialog({ classes, handleSubmit, open, onRequestClose }) {
   return (
     <Dialog open={open} onClose={onRequestClose}>
-      <DialogTitle id="new-project-dialog-title">New Project</DialogTitle>
+      <DialogTitle id="new-event-dialog-title">New Event</DialogTitle>
       <form onSubmit={handleSubmit} className={classes.inputs}>
         <DialogContent>
           <Field
             name="name"
             component={TextField}
-            label="Project Name"
+            label="Event Name"
             validate={[required]}
           />
         </DialogContent>
@@ -35,11 +35,11 @@ function NewProjectDialog({ classes, handleSubmit, open, onRequestClose }) {
   )
 }
 
-NewProjectDialog.propTypes = {
+NewEventDialog.propTypes = {
   classes: PropTypes.object.isRequired, // from enhancer (withStyles)
   handleSubmit: PropTypes.func.isRequired, // from enhancer (reduxForm)
   open: PropTypes.bool.isRequired,
   onRequestClose: PropTypes.func.isRequired
 }
 
-export default NewProjectDialog
+export default NewEventDialog

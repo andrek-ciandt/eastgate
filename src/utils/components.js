@@ -26,9 +26,9 @@ export function spinnerWhile(condition) {
  * import firebaseConnect from 'react-redux-firebase/lib/firebaseConnect'
  *
  * const enhance = compose(
- *   firebaseConnect(['projects']),
- *   connect(({ firebase: { data: { projects } } })),
- *   spinnerWhileLoading(['projects'])
+ *   firebaseConnect(['events']),
+ *   connect(({ firebase: { data: { events } } })),
+ *   spinnerWhileLoading(['events'])
  * )
  *
  * export default enhance(SomeComponent)
@@ -49,8 +49,8 @@ export function spinnerWhileLoading(propNames) {
  * import firebaseConnect from 'react-redux-firebase/lib/firebaseConnect'
  *
  * const enhance = compose(
- *   withProps(() => ({ projectName: 'test' })),
- *   logProps(['projectName']) // 'test' would be logged to console when SomeComponent is rendered
+ *   withProps(() => ({ eventName: 'test' })),
+ *   logProps(['eventName']) // 'test' would be logged to console when SomeComponent is rendered
  * )
  *
  * export default enhance(SomeComponent)
