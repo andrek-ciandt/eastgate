@@ -15,6 +15,7 @@ function EventsPage({
   newDialogOpen,
   toggleDialog,
   deleteEvent,
+  joinEvent,
   addEvent,
   classes,
   match,
@@ -43,6 +44,7 @@ function EventsPage({
                     event={event}
                     onSelect={() => goToEvent(event.id)}
                     onDelete={() => deleteEvent(event.id)}
+                    onDelete={() => joinEvent(event.id)}
                     showDelete={false}
                   />
                 ))}
@@ -63,6 +65,7 @@ EventsPage.propTypes = {
   newDialogOpen: PropTypes.bool, // from enhancer (withStateHandlers)
   toggleDialog: PropTypes.func.isRequired, // from enhancer (withStateHandlers)
   deleteEvent: PropTypes.func.isRequired, // from enhancer (withHandlers - firebase)
+  joinEvent: PropTypes.func.isRequired, // from enhancer (withHandlers - firebase)
   collabEvents: PropTypes.object, // from enhancer (withHandlers - firebase)
   addEvent: PropTypes.func.isRequired, // from enhancer (withHandlers - firebase)
   goToEvent: PropTypes.func.isRequired // from enhancer (withHandlers - router)

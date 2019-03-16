@@ -87,6 +87,17 @@ export default compose(
           return Promise.reject(err)
         })
     },
+    joinEvent: props => eventId => {
+      const { firestore, showError, showSuccess } = props
+      return firestore
+        .delete({ collection: 'events', doc: eventId })
+        .then(() => showSuccess('Event deleted successfully'))
+        .catch(err => {
+          console.error('Error:', err) // eslint-disable-line no-console
+          showError(err.message || 'Could not delete event')
+          return Promise.reject(err)
+        })
+    },
     goToEvent: ({ history }) => eventId => {
       history.push(`${LIST_PATH}/${eventId}`)
     }

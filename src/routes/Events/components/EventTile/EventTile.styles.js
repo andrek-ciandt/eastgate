@@ -9,7 +9,6 @@ export default theme => ({
     padding: theme.spacing.unit * 1.3
   },
   top: {
-    display: 'flex',
     justifyContent: 'space-between',
     width: '100%'
   },
