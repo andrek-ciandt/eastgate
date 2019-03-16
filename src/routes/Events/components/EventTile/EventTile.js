@@ -5,18 +5,24 @@ import IconButton from '@material-ui/core/IconButton'
 import Tooltip from '@material-ui/core/Tooltip'
 import DeleteIcon from '@material-ui/icons/Delete'
 
-function EventTile({ name, place, time, description, onSelect, onDelete, showDelete, classes }) {
+function EventTile({ event, onSelect, onDelete, showDelete, classes }) {
   return (
     <Paper className={classes.root}>
       <div className={classes.top}>
         <span className={classes.name} onClick={onSelect}>
-          {name || 'No Name'}
+          {event.name || 'No Name'}
         </span>
         <p>
-          {place || 'No Place'}
+          {event.place || 'No Place'}
         </p>
         <p>
-          {description || 'No Description'}
+          {event.startTime.toDate().toDateString() || 'No Time'}
+        </p>
+        <p>
+          {event.endTime.toDate().toDateString() || 'No Time'}
+        </p>
+        <p>
+          {event.description || 'No Description'}
         </p>
         {showDelete && onDelete ? (
           <Tooltip title="delete">

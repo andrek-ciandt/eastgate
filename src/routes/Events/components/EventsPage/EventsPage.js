@@ -36,19 +36,17 @@ function EventsPage({
               onRequestClose={toggleDialog}
             />
             <div className={classes.tiles}>
-              <NewEventTile onClick={toggleDialog} />
               {!isEmpty(events) &&
                 events.map((event, ind) => (
                   <EventTile
                     key={`Event-${event.id}-${ind}`}
-                    name={event.name}
-                    place={event.place}
-                    time={event.time}
-                    description={event.description}
+                    event={event}
                     onSelect={() => goToEvent(event.id)}
                     onDelete={() => deleteEvent(event.id)}
+                    showDelete={false}
                   />
                 ))}
+                <NewEventTile onClick={toggleDialog} />
             </div>
           </div>
         )}
