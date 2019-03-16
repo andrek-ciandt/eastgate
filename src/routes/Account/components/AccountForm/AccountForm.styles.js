@@ -6,6 +6,6 @@ export default theme => ({
     height: '100%'
   },
   fields: {
-    width: '60%'
+    width: '100%'
   }
 })

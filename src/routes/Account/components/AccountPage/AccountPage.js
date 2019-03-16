@@ -1,28 +1,46 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Paper from '@material-ui/core/Paper'
 import defaultUserImageUrl from 'static/User.png'
 import AccountForm from '../AccountForm'
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    margin: 10,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+});
 
 function AccountPage({ avatarUrl, updateAccount, profile, classes }) {
   return (
     <div className={classes.root}>
       <Paper className={classes.pane}>
         <div className={classes.settings}>
-          <div>
-            <img
-              className={classes.avatarCurrent}
-              src={avatarUrl || defaultUserImageUrl}
-              alt=""
-            />
-          </div>
-          <div className={classes.meta}>
-            <AccountForm
-              onSubmit={updateAccount}
-              account={profile}
-              initialValues={profile}
-            />
-          </div>
+          <Grid container spacing={24}>     
+            <Grid item xs={12} sm={6}>
+              <img
+                className={classes.avatarCurrent}
+                src={avatarUrl || defaultUserImageUrl}
+                alt=""
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <div className={classes.meta}>
+                <AccountForm
+                  onSubmit={updateAccount}
+                  account={profile}
+                  initialValues={profile}
+                />
+              </div>
+            </Grid>
+          </Grid>
         </div>
       </Paper>
     </div>
@@ -36,4 +54,4 @@ AccountPage.propTypes = {
   profile: PropTypes.object
 }
 
-export default AccountPage
+export default withStyles(styles)(AccountPage);

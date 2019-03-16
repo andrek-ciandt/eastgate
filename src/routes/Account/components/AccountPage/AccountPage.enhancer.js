@@ -9,7 +9,7 @@ import { UserIsAuthenticated } from 'utils/router'
 import styles from './AccountPage.styles'
 
 export default compose(
-  UserIsAuthenticated, // redirect to /login if user is not authenticated
+  //UserIsAuthenticated, // redirect to /login if user is not authenticated
   withFirebase,
   withNotifications,
   connect(({ firebase: { profile } }) => ({

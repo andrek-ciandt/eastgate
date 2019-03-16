@@ -8,7 +8,7 @@ export default theme => ({
   pane: {
     ...theme.flexColumnCenter,
     justifyContent: 'space-around',
-    flexBasis: '60%',
+    flexBasis: '90%',
     padding: theme.spacing.unit
   },
   settings: {
@@ -23,7 +23,7 @@ export default theme => ({
   },
   meta: {
     ...theme.flexColumnCenter,
-    flexBasis: '60%',
+    flexBasis: '90%',
     marginBottom: '3rem',
     marginTop: '2rem'
   }
