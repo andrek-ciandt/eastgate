@@ -14,7 +14,7 @@ export default compose(
   withNotifications,
   connect(({ firebase: { profile } }) => ({
     profile,
-    avatarUrl: profile.avatarUrl
+    avatarUrl: profile.avatarUrl+"?width=350&height=350"
   })),
   spinnerWhileLoading(['profile']),
   setPropTypes({

@@ -16,8 +16,8 @@ export default theme => ({
   },
   avatarCurrent: {
     width: '100%',
-    maxWidth: '13rem',
-    marginTop: '3rem',
+    maxWidth: '350px',
+    marginTop: '0px',
     height: 'auto',
     cursor: 'pointer'
   },

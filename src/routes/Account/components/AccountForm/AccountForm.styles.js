@@ -7,5 +7,8 @@ export default theme => ({
   },
   fields: {
     width: '100%'
+  },
+  h4: {
+  	align: 'center'
   }
 })

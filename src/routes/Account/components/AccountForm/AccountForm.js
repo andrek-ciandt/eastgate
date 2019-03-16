@@ -5,12 +5,13 @@ import Button from '@material-ui/core/Button'
 import { TextField } from 'redux-form-material-ui'
 import ProviderDataForm from '../ProviderDataForm'
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, createMuiTheme } from '@material-ui/core/styles';
 import DateFnsUtils from '@date-io/date-fns';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import DatePicker from 'material-ui/DatePicker';
 import ChipInput from 'material-ui-chip-input'
+import ThemeSettings from 'theme'
 
 let DateTimeFormat;
 DateTimeFormat = global.Intl.DateTimeFormat;
@@ -22,6 +23,7 @@ minDate.setHours(0, 0, 0, 0);
 maxDate.setFullYear(maxDate.getFullYear() - 18);
 maxDate.setHours(0, 0, 0, 0);
 
+const theme = createMuiTheme(ThemeSettings)
 
 function AccountForm({
   account,
@@ -43,7 +45,7 @@ function AccountForm({
           label="Display Name"
         />
         <Field name="email" label="Email" component={TextField} fullWidth />
-        <MuiThemeProvider>     
+        <MuiThemeProvider theme={theme}>     
           <DatePicker
             hintText="Birth date"
             firstDayOfWeek={0}
@@ -62,7 +64,9 @@ function AccountForm({
         <ChipInput
           fullWidth
           label="Interests"
+          dataSource={['beer', 'soccer', 'people']}
           defaultValue={['foo', 'bar']}
+          openOnFocus={true}
           onChange={(chips) => handleDateChange}
         />
        
@@ -74,7 +78,7 @@ function AccountForm({
           <ProviderDataForm providerData={account.providerData} />
         </div>
       )}
-      <Button color="primary" type="submit" disabled={pristine || submitting}>
+      <Button color="primary" type="submit" disabled={submitting}>
         {submitting ? 'Saving' : 'Save'}
       </Button>
     </form>
